@@ -1,13 +1,20 @@
 /*
- * NOTA:
- * - Este script deve ser configurado como Step 2 na automação do Automation Studio.
- * - O Step 1 deve ser uma Query Activity que filtra e insere os contatos a serem excluídos na Data Extension.
- * - Certifique-se de que a Data Extension utilizada seja "Sendable".
- *
- * NOTE:
- * - This script should be configured as Step 2 in Automation Studio.
- * - Step 1 must be a Query Activity that filters and inserts the contacts to be deleted into the Data Extension.
- * - Ensure that the Data Extension used is "Sendable".
+    --------------------------------------
+    📌 NOTES: AUTOMATION ESTRUCTURE
+    --------------------------------------
+
+     - This script should be configured as Step 2 in Automation Studio.
+     - Step 1 must be a Query Activity that filters and inserts the contacts to be deleted into the Data Extension.
+     - Ensure that the Data Extension used is "Sendable".
+
+    --------------------------------------
+    📌 DICTIONARY: PARAMETER DEFINITIONS
+    --------------------------------------
+
+    client_id: Client Id (Found in Installed Packages in SFMC)
+    client_secret: Client Secret (Found in Installed Packages in SFMC)
+    account_id: Your MID (MID of your SFMC Business Unit)
+    listKey: ExternalKey (The External Key of the Data Extension used as a list in Contact Builder)
  */
 
 
@@ -33,11 +40,12 @@ if (accessToken != "") {
         // Executa a exclusão utilizando listReference
         // ***********************
         var deleteUrl = "https://" + subdomain + ".rest.marketingcloudapis.com/contacts/v1/contacts/actions/delete?type=listReference";
-        
-        /* 
-         * Certifique-se de que a Data Extension (referenciada pelo listKey) esteja configurada como lista no Contact Builder.
-         * O listKey deve ser a External Key da sua Data Extension.
-         */
+
+
+        // ***********************
+        // O listKey deve ser a External Key da sua Data Extension.
+        // ***********************
+
         var payload1 = '{"deleteOperationType": "ContactAndAttributes",'+
                        '"targetList": {'+
                            '"listType": {"listTypeID": 3},'+
