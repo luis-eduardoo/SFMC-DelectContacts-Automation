@@ -15,6 +15,7 @@
     client_secret: Client Secret (Found in Installed Packages in SFMC)
     account_id: Your MID (MID of your SFMC Business Unit)
     listKey: ExternalKey (The External Key of the Data Extension used as a list in Contact Builder)
+
  */
 
 
