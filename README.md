@@ -1,0 +1,1 @@
+# SFMC-DelectContacts-Automation
