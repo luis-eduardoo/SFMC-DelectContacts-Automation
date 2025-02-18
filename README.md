@@ -35,12 +35,8 @@
 - Pode haver um período em que os contatos ainda permanecem visíveis até que o processo seja concluído  
   _(aguarde alguns minutos)_.
 
-⚠️ **ATENÇÃO** ⚠️  
+⚠️ **ATENÇÃO - Riscos e Considerações Importantes** ⚠️  
 A exclusão de contatos é uma ação irreversível. Certifique-se de revisar os contatos a serem deletados e realizar backups, se necessário.
-
----
-
-## Riscos e Considerações Importantes
 
 - **Ação Irreversível:** Uma vez que um contato é excluído, o processo não pode ser desfeito.
 - **Perda de Histórico:** Ao apagar um contato, você perderá todo o histórico de engajamento associado, como aberturas, cliques, conversões e outras interações.
@@ -52,10 +48,66 @@ Recomenda-se realizar testes em um ambiente controlado e manter backups dos dado
 
 ---
 
-Crédito de desenvolvimento e pesquisa:  
+✒️ Este código foi baseado nos conteúdos e nas ideias apresentadas nos seguintes artigos:  
+- [Digital Marketing on Cloud](https://digitalmarketingoncloud.com/salesforce-marketing-cloud/contact-deletion-in-marketing-cloud/) by Lukas Lunow  
 - [Salesforce StackExchange](https://salesforce.stackexchange.com/questions/245799/trying-to-automate-contact-deletion-with-ssjs)  
-- [Digital Marketing on Cloud](https://digitalmarketingoncloud.com/salesforce-marketing-cloud/contact-deletion-in-marketing-cloud/)
+
+Caso tenha qualquer tipo de dúvida ou sugestão, fico disponível pelo meu LinkedIn. 😁 🤙
 
 ---
 
-Caso tenha qualquer tipo de dúvidas ou sugestões, fico disponível pelo meu LinkedIn. 😁 🤙
+# [EN] SFMC-DelectContacts-Automation: Automating Contact Deletion in Salesforce Marketing Cloud 🗑️
+
+## Prerequisites
+
+### 1. Creating a Package in Marketing Cloud
+- **Installed Package:**
+  - Create an *Installed Package* in your Salesforce Marketing Cloud account.
+  - Add a **Server-to-Server API Integration** component.
+  - Grant the necessary permissions to access the endpoint:
+    ```
+    /contacts/v1/contacts/actions/delete
+    ```
+  - Note down the following values:
+    - **Client ID**
+    - **Client Secret**
+    - **Subdomain**
+    - **MID**
+
+### 2. Enabling Contact Deletion in Your Account
+- Access **Contact Configuration** and enable the contact deletion feature in your Business Unit (BU).
+
+![image](https://github.com/user-attachments/assets/559b44a4-f47d-4482-ac8b-d1081aa4411a)
+
+- If necessary, adjust the settings or contact support to enable this functionality.
+- If required, click on **Manage Settings** and set the suppression period to **0 days**.  
+  _(Only do this if you are sure about the process.)_
+
+### 3. Configuring the Data Extension
+- The Data Extension that stores the contacts to be deleted must be _Sendable_.
+- Note the **External Key** of the Data Extension to reference it in the script.
+
+### 4. Monitoring the Deletion Process in the **Contact Analytics** Tab
+- The **Contact Analytics** tab will only be available after enabling the contact deletion feature in your BU.
+- Contact deletion is performed **asynchronously**.
+- There might be a delay during which contacts remain visible until the process is complete  
+  _(please wait a few minutes)_.
+
+⚠️ **WARNING - Risks and Important Considerations** ⚠️  
+Contact deletion is an irreversible action. Make sure to review the contacts to be deleted and back up your data if necessary.
+
+- **Irreversible Action:** Once a contact is deleted, the process cannot be undone.
+- **Loss of History:** Deleting a contact will remove all associated engagement history, such as opens, clicks, conversions, and other interactions.
+- **Loss of Device Data:** Information such as DeviceID and other data related to the devices used by contacts will be removed.
+- **Loss of Custom Attributes:** Any additional data, such as custom attributes and preferences, will be lost, which may impact future analyses and segmentation.
+- **Impact on Metrics:** Removing contacts can affect consolidated reports and metrics, altering the overall performance view of your account.
+
+It is recommended to test in a controlled environment and back up your data before proceeding with complete deletion.
+
+---
+
+✒️ This code is based on the content and ideas presented in the following articles:  
+- [Digital Marketing on Cloud](https://digitalmarketingoncloud.com/salesforce-marketing-cloud/contact-deletion-in-marketing-cloud/) by Lukas Lunow  
+- [Salesforce StackExchange](https://salesforce.stackexchange.com/questions/245799/trying-to-automate-contact-deletion-with-ssjs)
+
+If you have any questions or suggestions, feel free to reach out to me on LinkedIn. 😁 🤙
